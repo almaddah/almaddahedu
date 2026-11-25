@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AL-MADDAH EDUCATION | Institut d'Apprentissage du Coran & de la Langue Arabe</title>
+    <meta name="description" content="AL-MADDAH EDUCATION : Apprenez le Saint Coran (Tajwid, Mémorisation) et la langue arabe (niveaux A1.1 à avancé) en ligne ou en présentiel avec un suivi structuré sur 12 semaines.">
+
+    <!-- Favicon SVG intégrée (Émeraude & Doré) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F3D34'/%3E%3Ctext x='32' y='44' font-family='serif' font-size='34' font-weight='bold' fill='%23C69C53' text-anchor='middle'%3E%D9%85%3C/text%3E%3C/svg%3E">
+
+    <!-- Métadonnées Open Graph (Aperçu WhatsApp, Facebook, LinkedIn) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AL-MADDAH EDUCATION | Saint Coran, Langue Arabe & Sciences Islamiques">
+    <meta property="og:description" content="Parcours structurés sur 12 semaines, enseignants qualifiés, guides pédagogiques et espace élève avec suivi hebdomadaire.">
+    <meta property="og:locale" content="fr_FR">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emeraldDeep: '#0F3D34',
+                        emeraldMid: '#175448',
+                        emeraldLight: '#E8F2EF',
+                        goldAccent: '#C69C53',
+                        goldHover: '#B08740',
+                        creamBg: '#FAF8F5',
+                        inkDark: '#1A2421',
+                        inkMuted: '#52605C'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        arabic: ['"Amiri"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #FAF8F5; color: #1A2421; }
+        .arabic-ornament { font-family: 'Amiri', serif; }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .wa-float { animation: pulse-soft 3s infinite ease-in-out; }
+        .fade-in { animation: fadeIn 0.35s ease-out forwards; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-emeraldDeep selection:text-white">
+
+    <!-- CONFIGURATION GLOBALE (Numéro WhatsApp modifiable ici) -->
+    <script>
+        const WHATSAPP_PHONE_NUMBER = "22300000000"; // Remplacez par votre numéro WhatsApp Business (ex: 22370000000)
+        const INSTITUTE_NAME = "AL-MADDAH EDUCATION";
+    </script>
+
+    <!-- ==================== EN-TÊTE (NAVBAR) ==================== -->
+    <header class="sticky top-0 z-40 bg-creamBg/95 backdrop-blur-md border-b border-emeraldDeep/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" onclick="switchView('home'); return false;" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-2xl font-bold shadow-sm group-hover:bg-emeraldMid transition">
+                        م
+                    </div>
+                    <div>
+                        <span class="block font-extrabold text-lg tracking-tight text-emeraldDeep">AL-MADDAH</span>
+                        <span class="block text-[11px] font-semibold tracking-widest uppercase text-goldAccent">Education</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Desktop -->
+                <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-inkDark">
+                    <button onclick="switchView('home'); scrollToSection('formations')" class="hover:text-emeraldDeep transition">Nos Formations</button>
+                    <button onclick="switchView('home'); scrollToSection('pedagogie')" class="hover:text-emeraldDeep transition">Approche 12 Semaines</button>
+                    <button onclick="switchView('home'); scrollToSection('equipe')" class="hover:text-emeraldDeep transition">Équipe</button>
+                    <button onclick="switchView('home'); scrollToSection('tarifs')" class="hover:text-emeraldDeep transition">Tarifs</button>
+                    <button onclick="switchView('guide')" id="nav-guide-btn" class="text-emeraldDeep flex items-center gap-1.5 hover:text-goldAccent transition">
+                        <span>Guides & Blog</span>
+                        <span class="px-2 py-0.5 text-[10px] rounded-full bg-emeraldLight text-emeraldDeep font-bold">SEO</span>
+                    </button>
+                    <button onclick="switchView('home'); scrollToSection('faq')" class="hover:text-emeraldDeep transition">FAQ</button>
+                </nav>
+
+                <!-- CTA Button & Espace Élève -->
+                <div class="hidden lg:flex items-center gap-3">
+                    <button onclick="switchView('student')" id="nav-student-btn" class="px-4 py-2.5 rounded-xl border border-emeraldDeep/25 text-emeraldDeep text-sm font-bold hover:bg-emeraldLight/70 transition flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-goldAccent"></span>
+                        <span id="nav-student-label">Espace Élève</span>
+                    </button>
+                    <button onclick="openBookingModal('Cours d’évaluation gratuit')" class="px-5 py-2.5 rounded-xl bg-emeraldDeep text-white text-sm font-semibold hover:bg-emeraldMid transition shadow-sm">
+                        Cours d'essai gratuit
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-emeraldDeep hover:bg-emeraldLight" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-b border-emeraldDeep/10 px-4 pt-2 pb-6 space-y-2.5 shadow-lg">
+            <button onclick="switchView('home'); scrollToSection('formations'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-inkDark">Nos Formations</button>
+            <button onclick="switchView('home'); scrollToSection('pedagogie'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-inkDark">Approche 12 Semaines</button>
+            <button onclick="switchView('home'); scrollToSection('equipe'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-inkDark">Équipe Pédagogique</button>
+            <button onclick="switchView('home'); scrollToSection('tarifs'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-inkDark">Tarifs</button>
+            <button onclick="switchView('guide'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-emeraldDeep">Guides & Blog SEO</button>
+            <button onclick="switchView('home'); scrollToSection('faq'); toggleMobileMenu()" class="block w-full text-left py-2 font-semibold text-inkDark">FAQ</button>
+            <button onclick="switchView('student'); toggleMobileMenu()" class="w-full py-2.5 rounded-xl border border-emeraldDeep/25 text-emeraldDeep font-bold text-sm">
+                Accéder à l'Espace Élève
+            </button>
+            <button onclick="openBookingModal('Cours d’évaluation gratuit'); toggleMobileMenu()" class="w-full mt-2 py-3 rounded-xl bg-emeraldDeep text-white font-semibold">
+                Réserver un cours d'essai
+            </button>
+        </div>
+    </header>
+
+    <!-- =====================================================================
+         VUE 1 : PAGE D'ACCUEIL (VITRINE PRINCIPALE)
+    ====================================================================== -->
+    <main id="view-home" class="fade-in">
+        <!-- HERO SECTION -->
+        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emeraldLight text-emeraldDeep text-xs font-bold tracking-wide uppercase">
+                            <span class="w-2 h-2 rounded-full bg-goldAccent"></span>
+                            Centre de Formation Islamique & Professionnelle
+                        </div>
+                        <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-emeraldDeep leading-[1.12] tracking-tight">
+                            Apprenez le <span class="text-goldAccent">Saint Coran</span> et la langue arabe avec méthode et sérénité.
+                        </h1>
+                        <p class="text-lg text-inkMuted max-w-2xl leading-relaxed">
+                            Un accompagnement pédagogique structuré en sessions de 12 semaines, adapté aux adultes et aux enfants, en cours individuels ou en petits groupes, avec suivi hebdomadaire personnalisé.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                            <button onclick="openBookingModal('Cours d’évaluation gratuit')" class="px-7 py-4 rounded-xl bg-emeraldDeep text-white font-bold text-base hover:bg-emeraldMid transition shadow-md text-center">
+                                Réserver mon évaluation gratuite
+                            </button>
+                            <button onclick="switchView('guide')" class="px-7 py-4 rounded-xl bg-white border border-emeraldDeep/20 text-emeraldDeep font-bold text-base hover:bg-emeraldLight/50 transition text-center">
+                                Lire le guide d'apprentissage
+                            </button>
+                        </div>
+                        <div class="pt-4 flex flex-wrap items-center gap-6 text-sm text-inkMuted font-medium">
+                            <div class="flex items-center gap-2">
+                                <span class="text-goldAccent font-bold">✓</span> Enseignants qualifiés & pédagogues
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-goldAccent font-bold">✓</span> Progression par niveaux (A1.1 à B2)
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-goldAccent font-bold">✓</span> Horaires flexibles
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-emeraldDeep rounded-3xl p-8 text-white shadow-xl relative overflow-hidden">
+                            <div class="text-right font-arabic text-3xl text-goldAccent/90 mb-6 leading-loose">
+                                ﴿ وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا ﴾
+                            </div>
+                            <h2 class="text-xl font-bold mb-2">Parcours Certifiant & Évolutif</h2>
+                            <p class="text-emerald-100/80 text-sm mb-6 leading-relaxed">
+                                Chaque apprenant bénéficie d'un bilan initial afin d'intégrer le niveau exact correspondant à ses acquis.
+                            </p>
+                            <div class="space-y-3 mb-7">
+                                <div class="bg-white/10 rounded-xl p-3.5 flex items-center justify-between">
+                                    <div>
+                                        <p class="font-semibold text-sm">Cycle Trimestriel</p>
+                                        <p class="text-xs text-emerald-200">12 semaines avec évaluation finale</p>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-goldAccent/20 text-goldAccent text-xs font-bold">Structuré</span>
+                                </div>
+                                <div class="bg-white/10 rounded-xl p-3.5 flex items-center justify-between">
+                                    <div>
+                                        <p class="font-semibold text-sm">Fiche de Suivi Individuelle</p>
+                                        <p class="text-xs text-emerald-200">Bilan hebdomadaire des acquis</p>
+                                    </div>
+                                    <span class="px-2.5 py-1 rounded-lg bg-goldAccent/20 text-goldAccent text-xs font-bold">100% Suivi</span>
+                                </div>
+                            </div>
+                            <button onclick="openWhatsApp('Bonjour AL-MADDAH EDUCATION, je souhaite avoir des renseignements sur vos inscriptions.')" class="w-full py-3.5 rounded-xl bg-goldAccent hover:bg-goldHover text-emeraldDeep font-bold text-sm transition flex items-center justify-center gap-2">
+                                <span>Discuter avec un conseiller sur WhatsApp</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMATIONS SECTION -->
+        <section id="formations" class="py-20 bg-white border-y border-emeraldDeep/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Nos Pôles d'Enseignement</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mt-2">Des cursus adaptés à chaque objectif</h2>
+                    <p class="text-inkMuted mt-3">Explorez le programme détaillé sur 12 semaines de chaque formation ou inscrivez-vous directement.</p>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10">
+                    <button onclick="filterCourses('all')" class="filter-btn active px-5 py-2.5 rounded-xl text-sm font-bold bg-emeraldDeep text-white transition" data-filter="all">Tous les cursus</button>
+                    <button onclick="filterCourses('coran')" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-filter="coran">Saint Coran & Tajwid</button>
+                    <button onclick="filterCourses('arabe')" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-filter="arabe">Langue Arabe (CECRL)</button>
+                    <button onclick="filterCourses('sciences')" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-filter="sciences">Éducation Islamique</button>
+                </div>
+
+                <!-- Courses Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="courses-grid">
+                    <!-- Card 1 : Nourania -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="coran">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Pôle Coran</span>
+                                <span class="text-xs font-semibold text-inkMuted">Tous niveaux</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Lecture Coranique (Nourania)</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Apprentissage de l'alphabet arabe, des voyelles et des règles fondamentales de liaison pour lire fluidement dans le Mushaf.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Articulation précise des lettres (Makharij)</li>
+                                <li>• Lecture fluide sans hésitation</li>
+                                <li>• Suivi hebdomadaire sur 12 semaines</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('nourania')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Lecture Coranique (Nourania)')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 : Tajwid & Hifz -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="coran">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Pôle Coran</span>
+                                <span class="text-xs font-semibold text-inkMuted">Intermédiaire / Avancé</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Tajwid & Mémorisation (Hifz)</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Maîtrise théorique et pratique des règles de psalmodie accompagnée d'un programme structuré de mémorisation et de révision.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Règles du Noun Sakina, Madd, Qalqala</li>
+                                <li>• Plan de mémorisation & consolidation</li>
+                                <li>• Correction orale personnalisée</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('tajwid')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Tajwid & Mémorisation (Hifz)')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 : Arabe Littéraire -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="arabe">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep text-xs font-bold">Langue Arabe</span>
+                                <span class="text-xs font-semibold text-inkMuted">Niveaux A1.1 à B2</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Arabe Littéraire & Compréhension</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Progression structurée selon le référentiel CECRL pour lire, comprendre les textes religieux et s'exprimer avec aisance.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Vocabulaire thématique et grammaire (Nahw)</li>
+                                <li>• Expression orale et compréhension écrite</li>
+                                <li>• Évaluation écrite et orale à mi-parcours</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('arabe')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Arabe Littéraire & Compréhension')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 : Fondements de la Pratique -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="sciences">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Sciences Islamiques</span>
+                                <span class="text-xs font-semibold text-inkMuted">Adultes & Adolescents</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Fondements de la Pratique</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Étude accessible des bases essentielles : croyance authentique, jurisprudence de l'adoration (prière, jeûne) et comportement éthique.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Supports pédagogiques clairs fournis</li>
+                                <li>• Questions-réponses avec l'enseignant</li>
+                                <li>• Session de 12 semaines</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('fondements')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Fondements de la Pratique')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 : Programme Jeunesse -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="coran">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Spécial Enfants</span>
+                                <span class="text-xs font-semibold text-inkMuted">6 à 14 ans</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Programme Jeunesse (Coran & Arabe)</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Séances interactives et bienveillantes adaptées au rythme des enfants pour aimer l'apprentissage du Coran et de l'arabe.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Mémorisation de Juz Amma et courtes sourates</li>
+                                <li>• Initiation ludique à l'écriture et la lecture</li>
+                                <li>• Compte-rendu régulier aux parents</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('jeunesse')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Programme Jeunesse (Enfants)')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 : Accompagnement Intensif -->
+                    <div class="course-card bg-creamBg rounded-2xl p-7 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-lg transition" data-category="arabe">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="px-3 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep text-xs font-bold">Sur Mesure</span>
+                                <span class="text-xs font-semibold text-inkMuted">Individuel</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-emeraldDeep mb-2">Accompagnement Intensif</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Programme accéléré en cours particulier pour préparer un examen, perfectionner sa récitation ou franchir un palier linguistique.
+                            </p>
+                            <ul class="space-y-2 text-xs text-inkDark font-medium mb-6">
+                                <li>• Planning personnalisé selon vos disponibilités</li>
+                                <li>• Objectifs mesurables chaque semaine</li>
+                                <li>• Suivi rapproché</li>
+                            </ul>
+                        </div>
+                        <div class="space-y-2.5">
+                            <button onclick="openCourseDetail('intensif')" class="w-full py-2.5 rounded-xl bg-emeraldLight/80 hover:bg-emeraldLight text-emeraldDeep font-bold text-xs transition flex items-center justify-center gap-1.5">
+                                <span>Voir le programme (12 semaines)</span>
+                                <span>→</span>
+                            </button>
+                            <button onclick="openBookingModal('Accompagnement Intensif')" class="w-full py-3 rounded-xl border-2 border-emeraldDeep text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                                S'inscrire à ce cursus
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPROCHE PEDAGOGIQUE SECTION -->
+        <section id="pedagogie" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Méthodologie AL-MADDAH</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mt-2">Un cadre rigoureux en 4 étapes</h2>
+                    <p class="text-inkMuted mt-3">Nous allions approche par compétences et pédagogie par objectifs pour garantir des progrès visibles dès les premières semaines.</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-white p-6 rounded-2xl border border-emeraldDeep/10 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDeep text-goldAccent font-extrabold flex items-center justify-center mb-4">01</div>
+                        <h3 class="font-bold text-lg text-emeraldDeep mb-2">Test de Positionnement</h3>
+                        <p class="text-sm text-inkMuted leading-relaxed">Entretien individuel gratuit pour évaluer votre niveau actuel et définir vos objectifs précis.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-emeraldDeep/10 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDeep text-goldAccent font-extrabold flex items-center justify-center mb-4">02</div>
+                        <h3 class="font-bold text-lg text-emeraldDeep mb-2">Cycle de 12 Semaines</h3>
+                        <p class="text-sm text-inkMuted leading-relaxed">Un chronogramme clair semaine par semaine avec des supports pédagogiques dédiés.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-emeraldDeep/10 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDeep text-goldAccent font-extrabold flex items-center justify-center mb-4">03</div>
+                        <h3 class="font-bold text-lg text-emeraldDeep mb-2">Suivi Hebdomadaire</h3>
+                        <p class="text-sm text-inkMuted leading-relaxed">Chaque séance donne lieu à un relevé d'assiduité et d'acquisition des compétences.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-emeraldDeep/10 shadow-sm">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDeep text-goldAccent font-extrabold flex items-center justify-center mb-4">04</div>
+                        <h3 class="font-bold text-lg text-emeraldDeep mb-2">Évaluation & Passage</h3>
+                        <p class="text-sm text-inkMuted leading-relaxed">Examen écrit et oral en fin de session validant le passage au niveau supérieur.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== NOUVEAU (ÉTAPE 1) : ÉQUIPE PÉDAGOGIQUE ==================== -->
+        <section id="equipe" class="py-20 bg-white border-y border-emeraldDeep/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Encadrement & Excellence</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mt-2">Notre Équipe Pédagogique</h2>
+                    <p class="text-inkMuted mt-3">Des enseignants francophones diplômés, sélectionnés pour leur maîtrise scientifique, leur pédagogie et leur bienveillance.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Enseignant 1 -->
+                    <div class="bg-creamBg rounded-3xl p-7 border border-emeraldDeep/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-2xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-2xl font-bold shrink-0">
+                                    ق
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-goldAccent">Pôle Coran & Tajwid</span>
+                                    <h3 class="text-lg font-extrabold text-emeraldDeep">Oustaz Ibrahim K.</h3>
+                                    <p class="text-xs text-inkMuted">Titulaire d'une Ijazah (Hafs 'an 'Asim)</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Spécialisé dans la correction des points d'articulation (Makharij) et l'accompagnement des adultes débutants grâce à la méthode Nouraniya progressive.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-emeraldDeep/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-[11px] font-bold">Tajwid Pratique</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-[11px] font-bold">Mémorisation</span>
+                        </div>
+                    </div>
+
+                    <!-- Enseignante 2 -->
+                    <div class="bg-creamBg rounded-3xl p-7 border border-emeraldDeep/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-2xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-2xl font-bold shrink-0">
+                                    ع
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-goldAccent">Pôle Langue Arabe</span>
+                                    <h3 class="text-lg font-extrabold text-emeraldDeep">Oustadha Mariam D.</h3>
+                                    <p class="text-xs text-inkMuted">Diplômée en Didactique de l'Arabe</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Experte des parcours francophones (niveaux A1.1 à B2). Elle privilégie une approche communicative permettant de comprendre et parler dès les premières semaines.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-emeraldDeep/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep text-[11px] font-bold">Grammaire (Nahw)</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep text-[11px] font-bold">Expression Orale</span>
+                        </div>
+                    </div>
+
+                    <!-- Enseignant 3 -->
+                    <div class="bg-creamBg rounded-3xl p-7 border border-emeraldDeep/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-4 mb-5">
+                                <div class="w-14 h-14 rounded-2xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-2xl font-bold shrink-0">
+                                    ف
+                                </div>
+                                <div>
+                                    <span class="text-[11px] font-bold uppercase tracking-wider text-goldAccent">Éducation & Jeunesse</span>
+                                    <h3 class="text-lg font-extrabold text-emeraldDeep">Oustaz Abdoulaye S.</h3>
+                                    <p class="text-xs text-inkMuted">Référent Pédagogique & Sciences Islamiques</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">
+                                Coordinateur du suivi trimestriel sur 12 semaines et responsable du programme jeunesse (6-14 ans), alliant rigueur éducative et pédagogie interactive.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-emeraldDeep/10 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-[11px] font-bold">Fondements</span>
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-[11px] font-bold">Pédagogie Enfant</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== NOUVEAU (ÉTAPE 1) : TÉMOIGNAGES ==================== -->
+        <section id="temoignages" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Retours d'Expérience</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mt-2">La parole à nos apprenants et parents</h2>
+                    <p class="text-inkMuted mt-3">Découvrez comment le suivi hebdomadaire sur 12 semaines transforme la régularité de nos étudiants.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Témoignage 1 -->
+                    <div class="bg-white rounded-3xl p-7 border border-emeraldDeep/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-goldAccent text-sm mb-4">★★★★★</div>
+                            <p class="text-sm text-inkDark leading-relaxed italic mb-6">
+                                « À 38 ans, je ne savais pas lire l'arabe. Grâce à la méthode Nouraniya et au bilan de mi-parcours à la semaine 6, je lis aujourd'hui directement dans le Mushaf avec assurance. »
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100">
+                            <p class="font-bold text-sm text-emeraldDeep">Amadou T.</p>
+                            <p class="text-xs text-inkMuted">Cursus Lecture Coranique • Cours Individuel</p>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 2 -->
+                    <div class="bg-white rounded-3xl p-7 border border-emeraldDeep/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-goldAccent text-sm mb-4">★★★★★</div>
+                            <p class="text-sm text-inkDark leading-relaxed italic mb-6">
+                                « Le découpage en niveaux A1.1, A1.2 puis A2 est très motivant. On sait exactement quelles notions grammaticales et quel vocabulaire on maîtrise à la fin des 12 semaines. »
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100">
+                            <p class="font-bold text-sm text-emeraldDeep">Fatoumata B.</p>
+                            <p class="text-xs text-inkMuted">Cursus Arabe Littéraire • Groupe Restreint</p>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 3 -->
+                    <div class="bg-white rounded-3xl p-7 border border-emeraldDeep/10 shadow-sm flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-1 text-goldAccent text-sm mb-4">★★★★★</div>
+                            <p class="text-sm text-inkDark leading-relaxed italic mb-6">
+                                « Mes deux enfants suivent le Programme Jeunesse le week-end. L'enseignant est patient et nous recevons chaque semaine un point précis sur les sourates révisées. »
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100">
+                            <p class="font-bold text-sm text-emeraldDeep">Kadiatou & Moussa D.</p>
+                            <p class="text-xs text-inkMuted">Parents d'élèves • Programme Jeunesse</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APERÇU DES GUIDES PÉDAGOGIQUES (BLOG SEO) -->
+        <section id="guides-preview" class="py-20 bg-white border-t border-emeraldDeep/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+                    <div>
+                        <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Ressources & Guides SEO</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mt-2">Nos conseils pour réussir votre apprentissage</h2>
+                    </div>
+                    <button onclick="switchView('guide')" class="px-5 py-3 rounded-xl bg-emeraldLight hover:bg-emeraldDeep text-emeraldDeep hover:text-white font-bold text-sm transition self-start md:self-auto">
+                        Voir tous les guides (3) →
+                    </button>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <article class="bg-creamBg rounded-2xl p-6 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Coran & Tajwid</span>
+                            <h3 class="text-lg font-extrabold text-emeraldDeep mt-4 mb-2">Comment apprendre le Coran efficacement quand on est adulte ?</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">De la méthode Nouraniya à la règle de révision quotidienne : les 4 étapes clés pour mémoriser durablement.</p>
+                        </div>
+                        <button onclick="openArticle('coran')" class="text-sm font-bold text-emeraldDeep hover:text-goldAccent text-left transition">
+                            Lire le guide complet →
+                        </button>
+                    </article>
+
+                    <article class="bg-creamBg rounded-2xl p-6 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <span class="px-3 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep text-xs font-bold">Langue Arabe</span>
+                            <h3 class="text-lg font-extrabold text-emeraldDeep mt-4 mb-2">Apprendre l'arabe en partant de zéro : du niveau A1.1 à l'autonomie</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">Comment structurer son apprentissage entre vocabulaire actif, grammaire fonctionnelle (Nahw) et pratique orale.</p>
+                        </div>
+                        <button onclick="openArticle('arabe')" class="text-sm font-bold text-emeraldDeep hover:text-goldAccent text-left transition">
+                            Lire le guide complet →
+                        </button>
+                    </article>
+
+                    <article class="bg-creamBg rounded-2xl p-6 border border-emeraldDeep/10 flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Jeunesse & Parents</span>
+                            <h3 class="text-lg font-extrabold text-emeraldDeep mt-4 mb-2">Aider son enfant à mémoriser Juz 'Amma avec régularité et plaisir</h3>
+                            <p class="text-sm text-inkMuted leading-relaxed mb-5">Conseils pratiques pour instaurer un rituel de 15 minutes à la maison sans pression ni découragement.</p>
+                        </div>
+                        <button onclick="openArticle('jeunesse')" class="text-sm font-bold text-emeraldDeep hover:text-goldAccent text-left transition">
+                            Lire le guide complet →
+                        </button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TARIFS SECTION -->
+        <section id="tarifs" class="py-20 bg-emeraldDeep text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-14">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Formules & Inscriptions</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">Des formules accessibles et transparentes</h2>
+                    <p class="text-emerald-100/80 mt-3">Choisissez le rythme qui correspond à votre emploi du temps. Sans engagement caché.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <!-- Plan 1 -->
+                    <div class="bg-white text-inkDark rounded-3xl p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-inkMuted">Groupe Restreint</span>
+                            <h3 class="text-2xl font-extrabold text-emeraldDeep mt-1">Formule Essentielle</h3>
+                            <p class="text-sm text-inkMuted mt-2">Idéal pour avancer dans une dynamique collective stimulante (4 à 6 élèves max).</p>
+                            <div class="my-6 pb-6 border-b border-gray-100">
+                                <span class="text-3xl font-extrabold text-emeraldDeep">25 000 FCFA</span>
+                                <span class="text-sm text-inkMuted"> / mois (ou 39 €)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm mb-8">
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> 2 séances de 1h par semaine</li>
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> Supports de cours PDF inclus</li>
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> Évaluation trimestrielle</li>
+                            </ul>
+                        </div>
+                        <button onclick="openBookingModal('Formule Essentielle (Groupe)')" class="w-full py-3.5 rounded-xl bg-emeraldLight text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                            Choisir cette formule
+                        </button>
+                    </div>
+
+                    <!-- Plan 2 (Popular) -->
+                    <div class="bg-creamBg text-inkDark rounded-3xl p-8 border-4 border-goldAccent flex flex-col justify-between relative shadow-2xl">
+                        <div class="absolute -top-4 right-6 px-3.5 py-1 rounded-full bg-goldAccent text-emeraldDeep text-xs font-extrabold uppercase">
+                            Le plus choisi
+                        </div>
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">Cours Particulier</span>
+                            <h3 class="text-2xl font-extrabold text-emeraldDeep mt-1">Formule Individuelle</h3>
+                            <p class="text-sm text-inkMuted mt-2">Un enseignant dédié uniquement à votre progression et vos horaires.</p>
+                            <div class="my-6 pb-6 border-b border-emeraldDeep/10">
+                                <span class="text-3xl font-extrabold text-emeraldDeep">45 000 FCFA</span>
+                                <span class="text-sm text-inkMuted"> / mois (ou 69 €)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm mb-8">
+                                <li class="flex items-center gap-2"><span class="text-goldAccent font-bold">✓</span> 2 séances individuelles / semaine</li>
+                                <li class="flex items-center gap-2"><span class="text-goldAccent font-bold">✓</span> Horaires flexibles à la carte</li>
+                                <li class="flex items-center gap-2"><span class="text-goldAccent font-bold">✓</span> Fiche de suivi hebdomadaire</li>
+                                <li class="flex items-center gap-2"><span class="text-goldAccent font-bold">✓</span> Correction vocale entre les cours</li>
+                            </ul>
+                        </div>
+                        <button onclick="openBookingModal('Formule Individuelle')" class="w-full py-3.5 rounded-xl bg-emeraldDeep text-white font-bold text-sm hover:bg-emeraldMid transition shadow-md">
+                            Réserver cette formule
+                        </button>
+                    </div>
+
+                    <!-- Plan 3 -->
+                    <div class="bg-white text-inkDark rounded-3xl p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-inkMuted">Rythme Soutenu</span>
+                            <h3 class="text-2xl font-extrabold text-emeraldDeep mt-1">Formule Intensive</h3>
+                            <p class="text-sm text-inkMuted mt-2">Pour progresser rapidement en lecture, mémorisation ou langue arabe.</p>
+                            <div class="my-6 pb-6 border-b border-gray-100">
+                                <span class="text-3xl font-extrabold text-emeraldDeep">75 000 FCFA</span>
+                                <span class="text-sm text-inkMuted"> / mois (ou 115 €)</span>
+                            </div>
+                            <ul class="space-y-3 text-sm mb-8">
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> 4 séances individuelles / semaine</li>
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> Plan de mémorisation sur mesure</li>
+                                <li class="flex items-center gap-2"><span class="text-emeraldDeep font-bold">✓</span> Bilan mensuel détaillé</li>
+                            </ul>
+                        </div>
+                        <button onclick="openBookingModal('Formule Intensive')" class="w-full py-3.5 rounded-xl bg-emeraldLight text-emeraldDeep font-bold text-sm hover:bg-emeraldDeep hover:text-white transition">
+                            Choisir cette formule
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="py-20">
+            <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <span class="text-goldAccent font-bold text-xs uppercase tracking-widest">Questions Fréquentes</span>
+                    <h2 class="text-3xl font-extrabold text-emeraldDeep mt-2">Tout savoir avant de commencer</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <details class="group bg-white rounded-2xl border border-emeraldDeep/10 p-6">
+                        <summary class="flex justify-between items-center font-bold text-emeraldDeep cursor-pointer list-none">
+                            <span>Je suis totalement débutant(e), puis-je m'inscrire ?</span>
+                            <span class="text-goldAccent text-xl group-open:rotate-45 transition-transform">+</span>
+                        </summary>
+                        <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+                            Oui, tout à fait. Nos programmes débutent dès le niveau initial (alphabet arabe, articulation des lettres et niveau A1.1). Le cours d'évaluation gratuit permet de vous placer dans le groupe ou le parcours adapté.
+                        </p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl border border-emeraldDeep/10 p-6">
+                        <summary class="flex justify-between items-center font-bold text-emeraldDeep cursor-pointer list-none">
+                            <span>Comment se déroulent les cours à distance ?</span>
+                            <span class="text-goldAccent text-xl group-open:rotate-45 transition-transform">+</span>
+                        </summary>
+                        <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+                            Les cours ont lieu en direct en visioconférence (Zoom / Google Meet) avec partage d'écran interactif du Mushaf ou des supports de cours. Vous interagissez en temps réel avec votre enseignant.
+                        </p>
+                    </details>
+
+                    <details class="group bg-white rounded-2xl border border-emeraldDeep/10 p-6">
+                        <summary class="flex justify-between items-center font-bold text-emeraldDeep cursor-pointer list-none">
+                            <span>Quels sont les moyens de paiement acceptés ?</span>
+                            <span class="text-goldAccent text-xl group-open:rotate-45 transition-transform">+</span>
+                        </summary>
+                        <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+                            Nous acceptons les paiements mobiles (Orange Money, Wave, Moov Money), les virements bancaires ainsi que les paiements par carte bancaire pour les élèves résidant à l'étranger.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         VUE 2 (ÉTAPE 4) : DÉTAIL D'UN CURSUS SUR 12 SEMAINES
+    ====================================================================== -->
+    <section id="view-course-detail" class="hidden fade-in py-12 lg:py-16">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <button onclick="switchView('home'); scrollToSection('formations')" class="inline-flex items-center gap-2 text-sm font-bold text-emeraldDeep hover:text-goldAccent mb-8">
+                ← Retour à nos formations
+            </button>
+
+            <div class="bg-white rounded-3xl p-8 sm:p-12 border border-emeraldDeep/10 shadow-sm space-y-8">
+                <div class="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-6">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <span id="detail-pole-badge" class="px-3.5 py-1 rounded-full bg-emeraldLight text-emeraldDeep text-xs font-extrabold uppercase"></span>
+                        <span id="detail-level" class="px-3.5 py-1 rounded-full bg-goldAccent/20 text-emeraldDeep text-xs font-bold"></span>
+                    </div>
+                    <button id="detail-cta-btn" class="px-6 py-3 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-white font-bold text-sm transition shadow-sm">
+                        S'inscrire à ce cursus
+                    </button>
+                </div>
+
+                <div>
+                    <h1 id="detail-title" class="text-3xl sm:text-4xl font-extrabold text-emeraldDeep mb-4"></h1>
+                    <p id="detail-description" class="text-base text-inkMuted leading-relaxed"></p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-5 rounded-2xl bg-creamBg border border-emeraldDeep/10">
+                        <h2 class="text-xs font-extrabold uppercase tracking-wider text-goldAccent mb-1.5">Prérequis</h2>
+                        <p id="detail-prerequis" class="text-sm text-inkDark font-medium leading-relaxed"></p>
+                    </div>
+                    <div class="p-5 rounded-2xl bg-creamBg border border-emeraldDeep/10">
+                        <h2 class="text-xs font-extrabold uppercase tracking-wider text-goldAccent mb-1.5">Public concerné</h2>
+                        <p id="detail-public" class="text-sm text-inkDark font-medium leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-extrabold text-emeraldDeep mb-4">Objectifs opérationnels du cycle</h2>
+                    <div id="detail-objectives" class="grid sm:grid-cols-2 gap-3.5 text-sm text-inkDark font-medium"></div>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-extrabold text-emeraldDeep mb-4">Chronogramme détaillé sur 12 semaines</h2>
+                    <div id="detail-timeline" class="space-y-4"></div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <p class="text-sm text-inkMuted">Vous hésitez entre deux niveaux ? Commencez par un bilan gratuit de 20 minutes.</p>
+                    <button id="detail-bottom-cta" class="px-6 py-3.5 rounded-xl bg-goldAccent hover:bg-goldHover text-emeraldDeep font-bold text-sm transition whitespace-nowrap">
+                        Réserver mon évaluation gratuite
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         VUE 3 : CATALOGUE DES GUIDES & ARTICLES SEO (3 GUIDES COMPLETS)
+    ====================================================================== -->
+    <section id="view-guide" class="hidden fade-in py-12 lg:py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+                <button onclick="switchView('home')" class="inline-flex items-center gap-2 text-sm font-bold text-emeraldDeep hover:text-goldAccent">
+                    ← Retour à l'accueil
+                </button>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterArticles('all')" class="article-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-emeraldDeep text-white transition" data-cat="all">Tous les guides</button>
+                    <button onclick="filterArticles('coran')" class="article-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-inkDark border border-emeraldDeep/15 hover:bg-emeraldLight transition" data-cat="coran">Coran & Tajwid</button>
+                    <button onclick="filterArticles('arabe')" class="article-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-inkDark border border-emeraldDeep/15 hover:bg-emeraldLight transition" data-cat="arabe">Langue Arabe</button>
+                    <button onclick="filterArticles('jeunesse')" class="article-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-inkDark border border-emeraldDeep/15 hover:bg-emeraldLight transition" data-cat="jeunesse">Jeunesse</button>
+                </div>
+            </div>
+
+            <!-- Catalogue des 3 guides -->
+            <div id="guides-catalog" class="grid md:grid-cols-3 gap-6 mb-10">
+                <div class="guide-card bg-white rounded-2xl p-6 border border-emeraldDeep/15 shadow-sm flex flex-col justify-between cursor-pointer hover:border-goldAccent transition" data-cat="coran" onclick="openArticle('coran')">
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep font-bold">Coran & Tajwid</span>
+                            <span class="text-inkMuted">5 min de lecture</span>
+                        </div>
+                        <h2 class="text-lg font-extrabold text-emeraldDeep mb-2">Comment apprendre le Coran efficacement (adultes & débutants)</h2>
+                        <p class="text-xs text-inkMuted leading-relaxed">Méthode Nouraniya, règles progressives de Tajwid et routine quotidienne de révision.</p>
+                    </div>
+                    <span class="mt-4 inline-block text-xs font-bold text-goldAccent">Afficher l'article ci-dessous ↓</span>
+                </div>
+
+                <div class="guide-card bg-white rounded-2xl p-6 border border-emeraldDeep/15 shadow-sm flex flex-col justify-between cursor-pointer hover:border-goldAccent transition" data-cat="arabe" onclick="openArticle('arabe')">
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-goldAccent/20 text-emeraldDeep font-bold">Langue Arabe</span>
+                            <span class="text-inkMuted">6 min de lecture</span>
+                        </div>
+                        <h2 class="text-lg font-extrabold text-emeraldDeep mb-2">Apprendre l'arabe en partant de zéro : du niveau A1.1 à l'autonomie</h2>
+                        <p class="text-xs text-inkMuted leading-relaxed">Vocabulaire actif, grammaire fonctionnelle et immersion progressive sur cycles de 12 semaines.</p>
+                    </div>
+                    <span class="mt-4 inline-block text-xs font-bold text-goldAccent">Afficher l'article ci-dessous ↓</span>
+                </div>
+
+                <div class="guide-card bg-white rounded-2xl p-6 border border-emeraldDeep/15 shadow-sm flex flex-col justify-between cursor-pointer hover:border-goldAccent transition" data-cat="jeunesse" onclick="openArticle('jeunesse')">
+                    <div>
+                        <div class="flex justify-between items-center text-xs mb-3">
+                            <span class="px-2.5 py-1 rounded-lg bg-emeraldLight text-emeraldDeep font-bold">Jeunesse</span>
+                            <span class="text-inkMuted">4 min de lecture</span>
+                        </div>
+                        <h2 class="text-lg font-extrabold text-emeraldDeep mb-2">Aider son enfant à mémoriser Juz 'Amma avec régularité</h2>
+                        <p class="text-xs text-inkMuted leading-relaxed">Conseils pédagogiques aux parents : écoute répétée, valorisation et créneau court quotidien.</p>
+                    </div>
+                    <span class="mt-4 inline-block text-xs font-bold text-goldAccent">Afficher l'article ci-dessous ↓</span>
+                </div>
+            </div>
+
+            <!-- Lecteur d'article complet (dynamique parmi les 3 guides) -->
+            <article id="article-reader" class="bg-white rounded-3xl p-8 sm:p-12 border border-emeraldDeep/10 shadow-sm max-w-4xl mx-auto">
+                <!-- Contenu injecté dynamiquement par openArticle() -->
+            </article>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         VUE 4 (NOUVEAU - ÉTAPE 3) : ESPACE ÉLÈVE & SUIVI TRIMESTRIEL 12 SEMAINES
+    ====================================================================== -->
+    <section id="view-student" class="hidden fade-in py-12 lg:py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <!-- 1. ÉCRAN DE CONNEXION AU PORTAIL ÉLÈVE -->
+            <div id="student-login-box" class="max-w-md mx-auto bg-white rounded-3xl p-8 sm:p-10 border border-emeraldDeep/15 shadow-lg">
+                <div class="text-center mb-6">
+                    <div class="w-14 h-14 rounded-2xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-3xl font-bold mx-auto mb-3 shadow-sm">
+                        م
+                    </div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-goldAccent">Portail Pédagogique</span>
+                    <h1 class="text-2xl font-extrabold text-emeraldDeep mt-1">Espace Élève AL-MADDAH</h1>
+                    <p class="text-sm text-inkMuted mt-2">Accédez à votre salle de classe virtuelle, votre fiche de suivi sur 12 semaines et vos supports de cours.</p>
+                </div>
+
+                <!-- Bouton d'accès direct démo en 1 clic -->
+                <div class="p-4 rounded-2xl bg-emeraldLight/70 border border-emeraldDeep/15 mb-6">
+                    <p class="text-xs font-semibold text-emeraldDeep mb-2.5 text-center">Découvrir l'interface apprenant en un clic :</p>
+                    <button type="button" onclick="loginStudentDemo()" class="w-full py-3 px-4 rounded-xl bg-goldAccent hover:bg-goldHover text-emeraldDeep font-extrabold text-sm transition shadow-sm">
+                        Accéder à la démo élève (Moussa Traoré)
+                    </button>
+                </div>
+
+                <!-- Formulaire identifiant / mot de passe -->
+                <form onsubmit="handleStudentLogin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Identifiant ou e-mail élève</label>
+                        <input type="text" id="student-login-id" required value="moussa.traore@almaddah.edu" class="w-full px-4 py-2.5 rounded-xl bg-creamBg border border-emeraldDeep/20 text-sm focus:outline-none focus:border-emeraldDeep">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Mot de passe</label>
+                        <input type="password" id="student-login-pass" required value="almaddah2026" class="w-full px-4 py-2.5 rounded-xl bg-creamBg border border-emeraldDeep/20 text-sm focus:outline-none focus:border-emeraldDeep">
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-white font-bold text-sm transition shadow-md">
+                        Se connecter au tableau de bord
+                    </button>
+                </form>
+
+                <div class="mt-6 pt-5 border-t border-gray-100 text-center">
+                    <button onclick="switchView('home')" class="text-xs font-semibold text-inkMuted hover:text-emeraldDeep">
+                        ← Retour à la page d'accueil
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. TABLEAU DE BORD ÉLÈVE (UNE FOIS CONNECTÉ) -->
+            <div id="student-dashboard" class="hidden space-y-8">
+                <!-- Barre supérieure de navigation élève -->
+                <div class="flex flex-wrap items-center justify-between gap-4">
+                    <button onclick="switchView('home')" class="inline-flex items-center gap-2 text-sm font-bold text-emeraldDeep hover:text-goldAccent">
+                        ← Retour au site public
+                    </button>
+                    <button onclick="logoutStudent()" class="px-4 py-2 rounded-xl bg-white border border-emeraldDeep/20 text-xs font-bold text-inkDark hover:bg-red-50 hover:text-red-700 hover:border-red-200 transition">
+                        Se déconnecter
+                    </button>
+                </div>
+
+                <!-- En-tête Profil Apprenant & Indicateurs Trimestriels -->
+                <div class="bg-emeraldDeep text-white rounded-3xl p-7 sm:p-9 shadow-xl">
+                    <div class="grid lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-3">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-goldAccent text-xs font-bold uppercase tracking-wider">
+                                Session Automne 2026 • Actif
+                            </div>
+                            <h1 class="text-2xl sm:text-3xl font-extrabold">Assalamou alaykoum, Moussa Traoré</h1>
+                            <p class="text-emerald-100/85 text-sm sm:text-base">
+                                Cursus : <strong class="text-white">Lecture Coranique & Tajwid — Niveau 2</strong> • Enseignant : <strong class="text-goldAccent">Oustaz Ibrahim K.</strong>
+                            </p>
+                            <!-- Barre de progression sur 12 semaines -->
+                            <div class="pt-2 max-w-lg">
+                                <div class="flex justify-between text-xs font-semibold text-emerald-100 mb-1.5">
+                                    <span>Avancement du cycle trimestriel</span>
+                                    <span class="text-goldAccent font-bold">Semaine 7 / 12 (58%)</span>
+                                </div>
+                                <div class="w-full h-2.5 rounded-full bg-white/15 overflow-hidden">
+                                    <div class="h-full bg-goldAccent rounded-full" style="width: 58%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cartes Indicateurs -->
+                        <div class="lg:col-span-5 grid grid-cols-3 gap-3">
+                            <div class="bg-white/10 rounded-2xl p-4 border border-white/10 text-center">
+                                <span class="block text-[11px] uppercase tracking-wider text-emerald-200">Session</span>
+                                <span class="block text-xl sm:text-2xl font-extrabold text-goldAccent mt-1">S7 / 12</span>
+                                <span class="block text-[11px] text-emerald-100/80 mt-0.5">En cours</span>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-4 border border-white/10 text-center">
+                                <span class="block text-[11px] uppercase tracking-wider text-emerald-200">Assiduité</span>
+                                <span class="block text-xl sm:text-2xl font-extrabold text-white mt-1">100%</span>
+                                <span class="block text-[11px] text-emerald-100/80 mt-0.5">12 / 12 cours</span>
+                            </div>
+                            <div class="bg-white/10 rounded-2xl p-4 border border-white/10 text-center">
+                                <span class="block text-[11px] uppercase tracking-wider text-emerald-200">Bilan S6</span>
+                                <span class="block text-xl sm:text-2xl font-extrabold text-goldAccent mt-1">17,5/20</span>
+                                <span class="block text-[11px] text-emerald-100/80 mt-0.5">Validé</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 2 Colonnes : Prochaine Séance (Classe Virtuelle) + Supports Pédagogiques & Audios -->
+                <div class="grid lg:grid-cols-12 gap-8">
+                    <!-- Salle de Classe Virtuelle & Report -->
+                    <div class="lg:col-span-5 bg-white rounded-3xl p-7 border border-emeraldDeep/10 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-lg bg-emeraldLight text-emeraldDeep text-xs font-bold">Prochaine Séance</span>
+                                <span class="text-xs font-bold text-goldAccent">Semaine 7 • Cours #13</span>
+                            </div>
+                            <h2 class="text-xl font-extrabold text-emeraldDeep">Mercredi — 19h00 à 19h45</h2>
+                            <p class="text-sm text-inkMuted leading-relaxed">
+                                Thème : <strong>Règles du Mim Sakina (Idgham Shafawi & Ikhfa Shafawi)</strong> et récitation appliquée sur Sourate Al-Mulk (versets 1 à 15).
+                            </p>
+                            <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 text-xs text-inkDark space-y-1">
+                                <p><strong>Salle virtuelle :</strong> Zoom Classe #04 (AL-MADDAH)</p>
+                                <p><strong>Préparation demandée :</strong> Relire 5 fois les versets 1 à 10 avec écoute de Cheikh Al-Hussary.</p>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <a href="https://zoom.us" target="_blank" rel="noopener noreferrer" class="w-full py-3.5 px-5 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-white font-bold text-sm transition shadow-md flex items-center justify-center gap-2">
+                                <span>Rejoindre la salle de classe virtuelle</span>
+                                <span>↗</span>
+                            </a>
+                            <button onclick="openRescheduleModal()" class="w-full py-2.5 px-4 rounded-xl border border-emeraldDeep/20 text-emeraldDeep hover:bg-creamBg font-bold text-xs transition">
+                                Demander un report de séance
+                            </button>
+                            <p class="text-[11px] text-inkMuted text-center leading-relaxed">
+                                Rappel : toute demande de report en cours individuel doit être effectuée au moins <strong>24 heures avant</strong> le début de la séance.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Bibliothèque de Supports Pédagogiques & Audios -->
+                    <div class="lg:col-span-7 bg-white rounded-3xl p-7 border border-emeraldDeep/10 shadow-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">Ressources de l'élève</span>
+                                <h2 class="text-xl font-extrabold text-emeraldDeep mt-0.5">Supports Pédagogiques & Audios</h2>
+                            </div>
+                            <span class="text-xs font-semibold text-inkMuted bg-creamBg px-3 py-1 rounded-lg">Niveau 2 • Trimestre 1</span>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4" id="student-resources-list">
+                            <!-- Ressource 1 -->
+                            <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 flex flex-col justify-between gap-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-emeraldLight text-emeraldDeep text-[10px] font-extrabold uppercase">Fiche PDF</span>
+                                    <h3 class="font-bold text-sm text-emeraldDeep mt-2">Mémento Illustré du Tajwid (Niveau 2)</h3>
+                                    <p class="text-xs text-inkMuted mt-1">Synthèse visuelle : Noun Sakina, Mim Sakina et tableau des prolongations (Madd).</p>
+                                </div>
+                                <button onclick="openResourcePreview('memento')" class="w-full py-2 rounded-xl bg-white border border-emeraldDeep/20 hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-bold text-xs transition">
+                                    Aperçu & Télécharger
+                                </button>
+                            </div>
+
+                            <!-- Ressource 2 -->
+                            <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 flex flex-col justify-between gap-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-emeraldLight text-emeraldDeep text-[10px] font-extrabold uppercase">Exercices PDF</span>
+                                    <h3 class="font-bold text-sm text-emeraldDeep mt-2">Cahier d'Exercices — Semaines 6 à 9</h3>
+                                    <p class="text-xs text-inkMuted mt-1">Repérage des règles d'assimilation et exercices de lecture vocalisée sur le Mushaf.</p>
+                                </div>
+                                <button onclick="openResourcePreview('exercices')" class="w-full py-2 rounded-xl bg-white border border-emeraldDeep/20 hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-bold text-xs transition">
+                                    Aperçu & Télécharger
+                                </button>
+                            </div>
+
+                            <!-- Ressource 3 -->
+                            <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 flex flex-col justify-between gap-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-goldAccent/20 text-emeraldDeep text-[10px] font-extrabold uppercase">Support Audio</span>
+                                    <h3 class="font-bold text-sm text-emeraldDeep mt-2">Récitation Modèle — Sourate Al-Mulk</h3>
+                                    <p class="text-xs text-inkMuted mt-1">Découpage verset par verset à vitesse lente pour l'entraînement oral hebdomadaire.</p>
+                                </div>
+                                <button onclick="openResourcePreview('audio')" class="w-full py-2 rounded-xl bg-white border border-emeraldDeep/20 hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-bold text-xs transition">
+                                    Écouter l'extrait & Notes
+                                </button>
+                            </div>
+
+                            <!-- Ressource 4 -->
+                            <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 flex flex-col justify-between gap-3">
+                                <div>
+                                    <span class="inline-block px-2.5 py-0.5 rounded bg-emeraldLight text-emeraldDeep text-[10px] font-extrabold uppercase">Bilan Officiel</span>
+                                    <h3 class="font-bold text-sm text-emeraldDeep mt-2">Relevé d'Évaluation — Semaine 6</h3>
+                                    <p class="text-xs text-inkMuted mt-1">Compte-rendu détaillé de l'examen intermédiaire (Note : 17,5/20 — Très bien).</p>
+                                </div>
+                                <button onclick="openResourcePreview('bilan')" class="w-full py-2 rounded-xl bg-white border border-emeraldDeep/20 hover:bg-emeraldDeep hover:text-white text-emeraldDeep font-bold text-xs transition">
+                                    Consulter le relevé
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fiche de Suivi Individuelle sur 12 Semaines (Tableau interactif) -->
+                <div class="bg-white rounded-3xl p-7 sm:p-9 border border-emeraldDeep/10 shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">Carnet Pédagogique Numérique</span>
+                            <h2 class="text-2xl font-extrabold text-emeraldDeep mt-1">Fiche de Suivi Individuelle — Cycle de 12 Semaines</h2>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-xs font-bold">
+                            <button onclick="filterTracking('all')" class="track-filter-btn px-3.5 py-2 rounded-xl bg-emeraldDeep text-white transition" data-status="all">Toutes (12)</button>
+                            <button onclick="filterTracking('Validé')" class="track-filter-btn px-3.5 py-2 rounded-xl bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-status="Validé">Validées (6)</button>
+                            <button onclick="filterTracking('En cours')" class="track-filter-btn px-3.5 py-2 rounded-xl bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-status="En cours">En cours (1)</button>
+                            <button onclick="filterTracking('À venir')" class="track-filter-btn px-3.5 py-2 rounded-xl bg-creamBg text-inkDark hover:bg-emeraldLight transition" data-status="À venir">À venir (5)</button>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="border-b border-emeraldDeep/15 text-xs uppercase tracking-wider text-inkMuted">
+                                    <th class="py-3.5 px-4">Semaine</th>
+                                    <th class="py-3.5 px-4">Compétence travaillée</th>
+                                    <th class="py-3.5 px-4">Statut</th>
+                                    <th class="py-3.5 px-4">Appréciation de l'enseignant & Évaluation</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tracking-table-body" class="divide-y divide-gray-100 text-sm">
+                                <!-- Injecté dynamiquement par JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-inkDark text-white pt-16 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-xl bg-emeraldDeep text-goldAccent flex items-center justify-center font-arabic text-2xl font-bold">
+                            م
+                        </div>
+                        <span class="font-extrabold text-lg tracking-tight">AL-MADDAH EDUCATION</span>
+                    </div>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        Centre de Formation Islamique et Professionnelle. Enseignement structuré du Saint Coran, de la langue arabe et des sciences religieuses.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-goldAccent mb-4">Navigation</h4>
+                    <ul class="space-y-2.5 text-sm text-gray-300">
+                        <li><button onclick="switchView('home'); scrollToSection('formations')" class="hover:text-white">Nos Formations</button></li>
+                        <li><button onclick="switchView('home'); scrollToSection('pedagogie')" class="hover:text-white">Approche 12 Semaines</button></li>
+                        <li><button onclick="switchView('home'); scrollToSection('equipe')" class="hover:text-white">Équipe Pédagogique</button></li>
+                        <li><button onclick="switchView('home'); scrollToSection('tarifs')" class="hover:text-white">Tarifs & Formules</button></li>
+                        <li><button onclick="switchView('guide')" class="hover:text-white">Guides & Blog SEO</button></li>
+                        <li><button onclick="switchView('student')" class="hover:text-goldAccent font-semibold text-goldAccent">Espace Élève</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-goldAccent mb-4">Contact Direct</h4>
+                    <p class="text-sm text-gray-300 mb-4">Une question sur les horaires, les niveaux ou les inscriptions ? Écrivez directement à notre secrétariat :</p>
+                    <button onclick="openWhatsApp('Bonjour AL-MADDAH EDUCATION, je souhaite obtenir des informations sur vos formations.')" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
+                        <span>Écrire au secrétariat sur WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+            <div class="pt-8 text-center text-xs text-gray-500">
+                © 2026 AL-MADDAH EDUCATION — Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         BOUTON FLOTTANT WHATSAPP (BAS À DROITE)
+    ====================================================================== -->
+    <div class="fixed bottom-6 right-6 z-50 group flex items-center gap-3">
+        <span class="hidden sm:block bg-white text-inkDark text-xs font-bold px-3.5 py-2 rounded-xl shadow-lg border border-gray-100 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+            Discuter sur WhatsApp
+        </span>
+        <button onclick="openWhatsApp('Bonjour AL-MADDAH EDUCATION, je souhaite poser une question concernant vos cours.')" aria-label="Contacter sur WhatsApp" class="wa-float w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-xl flex items-center justify-center transition">
+            <svg class="w-8 h-8 fill-current" viewBox="0 0 24 24">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zM12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2.546 21.2l4.184-.877A9.955 9.955 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- =====================================================================
+         MODAL DE RÉSERVATION / INSCRIPTION
+    ====================================================================== -->
+    <div id="booking-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-7 shadow-2xl relative">
+            <button onclick="closeBookingModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-inkDark font-bold">✕</button>
+
+            <!-- Formulaire -->
+            <div id="booking-form-container">
+                <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">Inscription & Évaluation</span>
+                <h3 class="text-2xl font-extrabold text-emeraldDeep mt-1 mb-4">Réserver votre place</h3>
+
+                <form onsubmit="handleBookingSubmit(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Cursus ou formule choisie</label>
+                        <input type="text" id="booking-course" required class="w-full px-4 py-2.5 rounded-xl bg-creamBg border border-emeraldDeep/20 text-sm font-semibold text-emeraldDeep">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Nom et Prénom</label>
+                        <input type="text" id="booking-name" required placeholder="Ex : Moussa Traoré" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-emeraldDeep">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Numéro WhatsApp / Téléphone</label>
+                        <input type="tel" id="booking-phone" required placeholder="Ex : +223 70 00 00 00" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-emeraldDeep">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Niveau estimé</label>
+                        <select id="booking-level" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-emeraldDeep">
+                            <option value="Débutant complet">Débutant complet</option>
+                            <option value="Intermédiaire (lecture hésitante)">Intermédiaire (lecture hésitante)</option>
+                            <option value="Avancé (perfectionnement / Tajwid)">Avancé (perfectionnement / Tajwid)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full py-3.5 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-white font-bold text-sm transition shadow-md mt-2">
+                        Valider ma demande
+                    </button>
+                </form>
+            </div>
+
+            <!-- Écran de confirmation -->
+            <div id="booking-success-container" class="hidden text-center py-4">
+                <div class="w-14 h-14 rounded-full bg-emeraldLight text-emeraldDeep flex items-center justify-center text-2xl font-bold mx-auto mb-4">✓</div>
+                <h3 class="text-xl font-extrabold text-emeraldDeep mb-2">Demande enregistrée !</h3>
+                <p class="text-sm text-inkMuted mb-6 leading-relaxed">
+                    Merci <strong id="confirm-name" class="text-inkDark"></strong>. Cliquez ci-dessous pour transmettre directement votre récapitulatif au secrétariat sur WhatsApp afin de fixer votre créneau.
+                </p>
+                <button id="confirm-wa-btn" class="w-full py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition flex items-center justify-center gap-2 mb-3">
+                    <span>Finaliser sur WhatsApp</span>
+                </button>
+                <button onclick="closeBookingModal()" class="text-xs font-semibold text-inkMuted hover:text-inkDark">
+                    Fermer cette fenêtre
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         MODAL APERÇU SUPPORT PÉDAGOGIQUE / DEMANDE DE REPORT (ESPACE ÉLÈVE)
+    ====================================================================== -->
+    <div id="student-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-7 shadow-2xl relative">
+            <button onclick="closeStudentModal()" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-inkDark font-bold">✕</button>
+            <div id="student-modal-content"></div>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT INTERACTIF ==================== -->
+    <script>
+        // Base de données des 3 guides SEO complets (Étape 2)
+        const articlesData = {
+            coran: {
+                badge: "Guide Pédagogique • Coran & Tajwid",
+                readTime: "5 min de lecture",
+                title: "Comment apprendre le Coran efficacement : méthode complète pour débutants et adultes",
+                intro: "Apprendre à lire, comprendre et mémoriser le Saint Coran est une démarche spirituelle noble qui demande de la régularité et une méthode structurée. Voici les étapes clés recommandées par l'équipe pédagogique d'AL-MADDAH EDUCATION.",
+                sections: [
+                    { id: "art-1", title: "1. Maîtriser l'alphabet et les points d'articulation (Makharij)", text: "Avant de chercher à lire rapidement, il est indispensable de prononcer chaque lettre arabe depuis son point d'articulation exact. Une méthode progressive comme Al-Qaida An-Nourania permet d'acquérir des réflexes solides sur les voyelles courtes, les prolongations et les liaisons entre les mots." },
+                    { id: "art-2", title: "2. Appliquer progressivement les règles de Tajwid", text: "Le Tajwid consiste à donner à chaque lettre son droit et ses caractéristiques lors de la récitation. Il est préférable d'intégrer les règles étape par étape (règles du Noun Sakina, du Mim Sakina, prolongations) plutôt que de vouloir tout mémoriser d'un seul coup." },
+                    { id: "art-3", title: "3. Adopter une routine de mémorisation régulière", text: "La constance prime sur la quantité : consacrer 20 à 30 minutes chaque jour à la lecture et à la révision des sourates déjà apprises est bien plus efficace que deux heures une seule fois par semaine." },
+                    { id: "art-4", title: "4. Être accompagné par un enseignant qualifié", text: "L'apprentissage du Coran repose traditionnellement sur la transmission orale. Un enseignant identifie immédiatement les erreurs de prononciation ou de rythme que l'on ne remarque pas seul." }
+                ]
+            },
+            arabe: {
+                badge: "Guide Pédagogique • Langue Arabe",
+                readTime: "6 min de lecture",
+                title: "Apprendre l'arabe en partant de zéro : les étapes clés du niveau A1.1 vers l'autonomie",
+                intro: "Beaucoup d'adultes francophones pensent que la langue arabe est inaccessible. En réalité, avec un découpage progressif par compétences (niveaux A1.1 à B2), il est possible de former ses premières phrases dès les premières semaines.",
+                sections: [
+                    { id: "art-1", title: "1. Dissocier l'apprentissage de l'écriture et de l'oral", text: "Dès le niveau A1.1, il est important d'associer le déchiffrage des lettres à des dialogues simples de présentation et de la vie courante pour garder une motivation constante." },
+                    { id: "art-2", title: "2. Acquérir un vocabulaire actif par thèmes", text: "Plutôt que d'apprendre des listes isolées, mémorisez les mots dans des phrases complètes (la famille, le temps, les études, les expressions usuelles) afin de les réutiliser naturellement." },
+                    { id: "art-3", title: "3. Comprendre la logique de la grammaire (Nahw) et morphologie (Sarf)", text: "La langue arabe repose sur un système de racines trilitères remarquablement logique. Comprendre comment se construisent les verbes et les noms accélère considérablement la compréhension des textes." },
+                    { id: "art-4", title: "4. Évaluer ses acquis toutes les 12 semaines", text: "Un bilan écrit et oral en fin de trimestre permet de valider chaque palier (A1.1, A1.2, A2...) et de corriger les lacunes avant d'aborder le niveau suivant." }
+                ]
+            },
+            jeunesse: {
+                badge: "Guide Parents • Programme Jeunesse",
+                readTime: "4 min de lecture",
+                title: "Comment aider son enfant à mémoriser le Coran avec régularité et plaisir",
+                intro: "Entre l'école et les activités quotidiennes, accompagner son enfant dans l'apprentissage du Coran demande de la douceur, de la constance et des séances adaptées à sa capacité de concentration.",
+                sections: [
+                    { id: "art-1", title: "1. Privilégier des séances courtes de 15 à 20 minutes", text: "Chez l'enfant de 6 à 12 ans, la concentration est optimale sur des créneaux courts mais réguliers, par exemple juste après le goûter ou avant le coucher." },
+                    { id: "art-2", title: "2. Utiliser l'écoute répétée avant la lecture", text: "Faire écouter la sourate en cours par un récitateur clair permet à l'enfant d'intégrer naturellement le rythme et la prononciation avant même de répéter les versets." },
+                    { id: "art-3", title: "3. Valoriser chaque progrès et réviser en famille", text: "Réciter ensemble les sourates du Juz 'Amma pendant la prière ou en trajet crée un lien affectif positif avec le Livre d'Allah." },
+                    { id: "art-4", title: "4. S'appuyer sur le suivi hebdomadaire de l'enseignant", text: "Le lien régulier entre le professeur et les parents permet de savoir exactement quels versets réviser durant la semaine." }
+                ]
+            }
+        };
+
+        // Base de données de la Fiche de Suivi sur 12 semaines (Espace Élève - Étape 3)
+        const studentTrackingData = [
+            { week: "Semaine 1", skill: "Évaluation diagnostique & révision des Makharij", status: "Validé", note: "Très bonne assiduité. Points d'articulation des lettres emphatiques consolidés." },
+            { week: "Semaine 2", skill: "Règles du Noun Sakina : Al-Idhar & Al-Idgham", status: "Validé", note: "Application fluide sur les exemples choisis. Continuer la lecture lente." },
+            { week: "Semaine 3", skill: "Règles du Noun Sakina : Al-Iqlab & Al-Ikhfa", status: "Validé", note: "Bonne maîtrise de la nasalisation (Ghunna) sur deux temps." },
+            { week: "Semaine 4", skill: "Prolongations naturelles (Madd Tabi'i) & sourates courtes", status: "Validé", note: "Respect régulier des durées de prolongation. Récitation posée." },
+            { week: "Semaine 5", skill: "Révision cumulée & préparation au bilan intermédiaire", status: "Validé", note: "Excellente régularité dans les exercices audio transmis entre les séances." },
+            { week: "Semaine 6", skill: "Évaluation Intermédiaire (Oral & Théorie Tajwid)", status: "Validé", note: "Note : 17,5 / 20 — Mention Très Bien. Passage validé vers la 2e moitié du trimestre." },
+            { week: "Semaine 7", skill: "Règles du Mim Sakina & Sourate Al-Mulk (v. 1–15)", status: "En cours", note: "Séance #13 prévue mercredi à 19h00. Préparer les versets 1 à 10." },
+            { week: "Semaine 8", skill: "La Qalqala (mineure et majeure) & Al-Mulk (v. 16–30)", status: "À venir", note: "Objectif : finaliser la lecture fluide de Sourate Al-Mulk." },
+            { week: "Semaine 9", skill: "Prolongations secondaires (Madd Muttasil & Munfasil)", status: "À venir", note: "Application sur des extraits du Juz Tabarak." },
+            { week: "Semaine 10", skill: "Règles d'arrêt et de reprise (Al-Waqf wa Al-Ibtida)", status: "À venir", note: "Repérage des signes d'arrêt dans le Mushaf de Médine." },
+            { week: "Semaine 11", skill: "Révision générale du trimestre & simulation d'examen", status: "À venir", note: "Récitation continue sans interruption sur 2 pages." },
+            { week: "Semaine 12", skill: "Examen Final Trimestriel & Délivrance de l'Attestation", status: "À venir", note: "Évaluation finale devant le référent pédagogique pour passage au Niveau 3." }
+        ];
+
+        // Base de données détaillée des 6 cursus (Chronogramme sur 12 semaines)
+        const coursesDetailData = {
+            nourania: {
+                pole: "Pôle Coran & Tajwid",
+                level: "Tous niveaux (Débutants)",
+                title: "Lecture Coranique (Nourania)",
+                description: "Apprentissage progressif de l'alphabet arabe, des voyelles courtes et longues, des liaisons et des points d'articulation pour lire fluidement dans le Mushaf.",
+                prerequis: "Aucun prérequis exigé ; accessible aux grands débutants.",
+                public: "Adultes, jeunes et apprenants souhaitant acquérir une lecture coranique fiable.",
+                objectives: [
+                    "Identifier et articuler correctement les 28 lettres de l'alphabet arabe",
+                    "Maîtriser les voyelles brèves, les prolongations (Madd) et la Soukoun",
+                    "Lire des mots et versets courts sans hésitation ni erreur de voyelle",
+                    "Aborder sereinement les règles de base du Tajwid"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Fondations", title: "Alphabet isolé & points d'articulation (Makharij)", content: "Reconnaissance visuelle des lettres, articulation de base et premières voyelles courtes (Fatha, Kasra, Damma)." },
+                    { weeks: "Semaines 3–5", badge: "Liaisons", title: "Formes liées & prolongations naturelles", content: "Étude des lettres en début, milieu et fin de mot, introduction des lettres de prolongation et de la Soukoun." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Évaluation Intermédiaire de Lecture", content: "Test oral de déchiffrage et de prononciation pour valider la première moitié du trimestre." },
+                    { weeks: "Semaines 7–11", badge: "Fluidité", title: "Tanwin, Chadda & lecture en contexte", content: "Maîtrise du redoublement (Chadda), des double-voyelles et lecture suivie d'extraits coraniques." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Examen Final & Passage au Niveau Supérieur", content: "Évaluation complète de la fluidité et de la justesse de lecture ouvrant l'accès au cycle Tajwid." }
+                ]
+            },
+            tajwid: {
+                pole: "Pôle Coran & Tajwid",
+                level: "Intermédiaire / Avancé",
+                title: "Tajwid & Mémorisation (Hifz)",
+                description: "Approfondissement théorique et pratique des règles de psalmodie (Tajwid) combiné à un programme structuré de mémorisation et de consolidation.",
+                prerequis: "Savoir lire l'alphabet arabe et déchiffrer un texte vocalisé.",
+                public: "Apprenants souhaitant embellir leur récitation et mémoriser durablement.",
+                objectives: [
+                    "Appliquer les règles du Noun Sakina, du Tanwin et du Mim Sakina",
+                    "Maîtriser les durées de Madd et les rebonds de la Qalqala",
+                    "Structurer un rythme quotidien de mémorisation et de révision (Muraja'a)",
+                    "Réciter avec justesse et régularité les passages étudiés"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Règles Orales", title: "Noun Sakina, Tanwin & Ghunna", content: "Étude pratique de l'Idhar, l'Idgham, l'Iqlab et l'Ikhfa avec exercices d'écoute et de récitation." },
+                    { weeks: "Semaines 3–5", badge: "Prolongations", title: "Mim Sakina & Madd (naturel et secondaire)", content: "Assimilation des règles du Mim Sakina et calibrage des temps de prolongation." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Évaluation Intermédiaire Tajwid & Récitation", content: "Vérification de l'application des règles en lecture continue et bilan de mémorisation." },
+                    { weeks: "Semaines 7–11", badge: "Consolidation", title: "Qalqala, arrêts (Waqf) & mémorisation progressive", content: "Travail sur les pauses appropriées, la clarté des finales et la révision cumulative des sourates." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Examen Final Trimestriel", content: "Récitation évaluée devant l'enseignant et remise du bilan de progression du trimestre." }
+                ]
+            },
+            arabe: {
+                pole: "Langue Arabe (CECRL)",
+                level: "Niveaux A1.1 à B2",
+                title: "Arabe Littéraire & Compréhension",
+                description: "Parcours linguistique progressif organisé par niveaux (A1.1 à B2) pour développer compréhension, expression orale, lecture et grammaire fonctionnelle.",
+                prerequis: "Test de positionnement initial (adapté du niveau grand débutant A1.1 au niveau avancé).",
+                public: "Étudiants, professionnels et apprenants visant la maîtrise de l'arabe standard.",
+                objectives: [
+                    "Comprendre et utiliser des expressions et structures adaptées au niveau visé",
+                    "Enrichir son vocabulaire thématique et structurer ses phrases",
+                    "Assimiler les bases de la grammaire (Nahw) et de la morphologie (Sarf)",
+                    "Valider chaque palier trimestriel par une évaluation écrite et orale"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Démarrage", title: "Vocabulaire clé & structures de base", content: "Mise en place des champs lexicaux du module et des premières constructions nominales ou verbales." },
+                    { weeks: "Semaines 3–5", badge: "Pratique", title: "Grammaire appliquée & expression guidée", content: "Exercices de reformulation, compréhension de textes courts et dialogues contextualisés." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Évaluation Intermédiaire Écrite & Orale", content: "Contrôle des acquis de la première moitié du cycle et ajustement des axes de travail." },
+                    { weeks: "Semaines 7–11", badge: "Approfondissement", title: "Syntaxe, lecture suivie & production", content: "Développement de l'autonomie à l'écrit et à l'oral à travers des études de cas et exercices ciblés." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Examen Final de Niveau", content: "Évaluation globale validant la maîtrise du niveau et l'accès au palier suivant." }
+                ]
+            },
+            fondements: {
+                pole: "Sciences Islamiques",
+                level: "Adultes & Adolescents",
+                title: "Fondements de la Pratique",
+                description: "Formation claire et structurée sur les repères essentiels de la croyance, des actes d'adoration (prière, purification, jeûne) et de l'éthique au quotidien.",
+                prerequis: "Aucun prérequis ; cours dispensés avec supports clairs en français et terminologie arabe expliquée.",
+                public: "Nouveaux apprenants, adultes et jeunes souhaitant consolider leurs bases.",
+                objectives: [
+                    "Clarifier les notions fondamentales de la foi et de la pratique quotidienne",
+                    "Vérifier la conformité des actes essentiels (purification, prière) avec méthode",
+                    "Cultiver une éthique équilibrée et une compréhension sereine des règles",
+                    "Poser ses questions directement à l'enseignant lors de séances interactives"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Repères", title: "Fondements de la croyance & intention", content: "Présentation des notions essentielles et de l'importance de la science utile dans la pratique." },
+                    { weeks: "Semaines 3–5", badge: "Adorations", title: "Purification (Tahara) & conditions de la prière", content: "Étude détaillée des étapes pratiques et des points de vigilance fréquents." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Point d'Étape & Questions-Réponses", content: "Synthèse des notions abordées et clarification des points pratiques rencontrés." },
+                    { weeks: "Semaines 7–11", badge: "Éthique & Vie", title: "Jeûne, comportements & éthique quotidienne", content: "Application des principes dans les relations familiales, sociales et professionnelles." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Synthèse Finale & Attestation de Suivi", content: "Récapitulatif général du cycle de 12 semaines et validation de la participation." }
+                ]
+            },
+            jeunesse: {
+                pole: "Spécial Enfants (6–14 ans)",
+                level: "6 à 14 ans",
+                title: "Programme Jeunesse (Coran & Arabe)",
+                description: "Accompagnement ludique, structuré et bienveillant conçu pour aider les enfants à mémoriser les courtes sourates et s'initier à la langue arabe.",
+                prerequis: "Adapté aux enfants de 6 à 14 ans, quel que soit leur niveau de départ.",
+                public: "Enfants et adolescents accompagnés avec un suivi régulier auprès des parents.",
+                objectives: [
+                    "Mémoriser et réciter avec soin les sourates ciblées (notamment Juz 'Amma)",
+                    "Développer le goût de l'apprentissage dans un cadre encourageant",
+                    "S'initier progressivement à la lecture et à l'écriture de l'arabe",
+                    "Offrir aux parents une visibilité claire sur la régularité de l'enfant"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Accueil", title: "Mise en confiance & premières sourates", content: "Découverte du rythme des séances, écoute active et mémorisation progressive de courts passages." },
+                    { weeks: "Semaines 3–5", badge: "Découverte", title: "Répétition guidée & bases de lecture/écriture", content: "Consolidation orale et activités ludiques adaptées à l'âge de l'enfant." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Récitation Bilan & Retour aux Parents", content: "Évaluation bienveillante des acquis de mi-parcours partagée avec la famille." },
+                    { weeks: "Semaines 7–11", badge: "Progression", title: "Nouvelles sourates & révision des acquis", content: "Enchaînement régulier entre nouvelles mémorisations et révision des sourates précédentes." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Bilan de Fin de Trimestre", content: "Célébration des progrès accomplis et orientation pour le trimestre suivant." }
+                ]
+            },
+            intensif: {
+                pole: "Sur Mesure (Individuel)",
+                level: "Tous niveaux",
+                title: "Accompagnement Intensif",
+                description: "Programme individuel à rythme soutenu pour franchir rapidement un cap en lecture, Tajwid, mémorisation ou langue arabe selon vos objectifs.",
+                prerequis: "Évaluation initiale pour définir le plan d'action et le volume horaire.",
+                public: "Apprenants motivés disposant d'un objectif précis ou d'une échéance.",
+                objectives: [
+                    "Accélérer la progression grâce à un encadrement individuel ciblé",
+                    "Corriger immédiatement les points bloquants à l'oral et à l'écrit",
+                    "Adapter le rythme des séances à votre emploi du temps",
+                    "Mesurer chaque semaine l'atteinte des objectifs fixés"
+                ],
+                timeline: [
+                    { weeks: "Semaines 1–2", badge: "Diagnostic", title: "Audit précis & lancement du rythme intensif", content: "Définition des priorités immédiates et mise en place des routines d'entraînement." },
+                    { weeks: "Semaines 3–5", badge: "Accélération", title: "Pratique intensive & corrections ciblées", content: "Séances rapprochées axées sur la pratique active et la levée des difficultés." },
+                    { weeks: "Semaine 6", badge: "Bilan Mi-Parcours", title: "Évaluation Intermédiaire & Réajustement", content: "Mesure des progrès réalisés et recalibrage des objectifs de la seconde moitié." },
+                    { weeks: "Semaines 7–11", badge: "Maîtrise", title: "Consolidation avancée & mise en situation", content: "Renforcement de la fluidité, de l'endurance et de la précision." },
+                    { weeks: "Semaine 12", badge: "Validation", title: "Bilan Final & Plan de Continuité", content: "Évaluation complète des objectifs atteints et recommandations pour la suite." }
+                ]
+            }
+        };
+
+        // Basculer entre les 4 vues principales : 'home', 'course-detail', 'guide', 'student'
+        function switchView(viewName) {
+            const homeView = document.getElementById('view-home');
+            const detailView = document.getElementById('view-course-detail');
+            const guideView = document.getElementById('view-guide');
+            const studentView = document.getElementById('view-student');
+
+            homeView.classList.add('hidden');
+            detailView.classList.add('hidden');
+            guideView.classList.add('hidden');
+            studentView.classList.add('hidden');
+
+            if (viewName === 'guide') {
+                guideView.classList.remove('hidden');
+                if (!document.getElementById('article-reader').innerHTML.trim()) {
+                    openArticle('coran', false);
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'course-detail') {
+                detailView.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (viewName === 'student') {
+                studentView.classList.remove('hidden');
+                renderTrackingTable('all');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                homeView.classList.remove('hidden');
+            }
+        }
+
+        // Afficher l'un des 3 guides complets dans le lecteur SEO (Étape 2)
+        function openArticle(articleKey, shouldScroll = true) {
+            const art = articlesData[articleKey] || articlesData.coran;
+            switchView('guide');
+
+            const reader = document.getElementById('article-reader');
+            reader.innerHTML = `
+                <div class="flex items-center gap-3 text-xs font-bold text-goldAccent uppercase tracking-wider mb-3">
+                    <span>${art.badge}</span>
+                    <span>•</span>
+                    <span>${art.readTime}</span>
+                </div>
+                <h1 class="text-2xl sm:text-4xl font-extrabold text-emeraldDeep leading-tight mb-5">${art.title}</h1>
+                <p class="text-base text-inkMuted leading-relaxed mb-8">${art.intro}</p>
+
+                <div class="bg-creamBg rounded-2xl p-6 border border-emeraldDeep/10 mb-8">
+                    <h2 class="font-bold text-emeraldDeep text-xs uppercase tracking-wider mb-3">Sommaire du guide</h2>
+                    <ul class="space-y-2 text-sm font-semibold text-emeraldDeep">
+                        ${art.sections.map(s => `<li><a href="#${s.id}" class="hover:underline">${s.title}</a></li>`).join('')}
+                    </ul>
+                </div>
+
+                <div class="space-y-7 text-inkDark leading-relaxed">
+                    ${art.sections.map(s => `
+                        <div id="${s.id}" class="scroll-mt-28">
+                            <h2 class="text-xl font-bold text-emeraldDeep mb-2">${s.title}</h2>
+                            <p class="text-inkMuted">${s.text}</p>
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="mt-10 bg-emeraldDeep rounded-2xl p-7 text-white flex flex-col sm:flex-row items-center justify-between gap-6">
+                    <div>
+                        <h3 class="text-lg font-bold mb-1">Prêt(e) à démarrer votre apprentissage ?</h3>
+                        <p class="text-sm text-emerald-100/80">Évaluez gratuitement votre niveau avec un enseignant d'AL-MADDAH EDUCATION.</p>
+                    </div>
+                    <button onclick="openBookingModal('Cours d’évaluation (depuis le Guide)')" class="px-6 py-3.5 rounded-xl bg-goldAccent hover:bg-goldHover text-emeraldDeep font-bold text-sm whitespace-nowrap transition">
+                        Réserver mon bilan gratuit
+                    </button>
+                </div>
+            `;
+
+            if (shouldScroll) {
+                reader.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function filterArticles(category) {
+            document.querySelectorAll('.article-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.classList.add('bg-emeraldDeep', 'text-white');
+                    btn.classList.remove('bg-white', 'text-inkDark');
+                } else {
+                    btn.classList.remove('bg-emeraldDeep', 'text-white');
+                    btn.classList.add('bg-white', 'text-inkDark');
+                }
+            });
+
+            document.querySelectorAll('.guide-card').forEach(card => {
+                if (category === 'all' || card.dataset.cat === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // ==================== FONCTIONS ESPACE ÉLÈVE (ÉTAPE 3) ====================
+        function loginStudentDemo() {
+            document.getElementById('student-login-box').classList.add('hidden');
+            document.getElementById('student-dashboard').classList.remove('hidden');
+            document.getElementById('nav-student-label').textContent = "Moussa T. (Connecté)";
+            renderTrackingTable('all');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleStudentLogin(e) {
+            e.preventDefault();
+            loginStudentDemo();
+        }
+
+        function logoutStudent() {
+            document.getElementById('student-dashboard').classList.add('hidden');
+            document.getElementById('student-login-box').classList.remove('hidden');
+            document.getElementById('nav-student-label').textContent = "Espace Élève";
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderTrackingTable(statusFilter) {
+            const tbody = document.getElementById('tracking-table-body');
+            if (!tbody) return;
+
+            const filtered = studentTrackingData.filter(row => statusFilter === 'all' || row.status === statusFilter);
+            tbody.innerHTML = filtered.map(row => {
+                let badgeClass = "bg-gray-100 text-inkMuted";
+                if (row.status === "Validé") badgeClass = "bg-emeraldLight text-emeraldDeep";
+                if (row.status === "En cours") badgeClass = "bg-goldAccent/25 text-emeraldDeep ring-1 ring-goldAccent";
+
+                return `
+                    <tr class="hover:bg-creamBg/70 transition">
+                        <td class="py-4 px-4 font-bold text-emeraldDeep whitespace-nowrap">${row.week}</td>
+                        <td class="py-4 px-4 font-semibold text-inkDark">${row.skill}</td>
+                        <td class="py-4 px-4 whitespace-nowrap">
+                            <span class="px-3 py-1 rounded-full text-xs font-extrabold ${badgeClass}">${row.status}</span>
+                        </td>
+                        <td class="py-4 px-4 text-xs text-inkMuted leading-relaxed">${row.note}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function filterTracking(status) {
+            document.querySelectorAll('.track-filter-btn').forEach(btn => {
+                if (btn.dataset.status === status) {
+                    btn.classList.add('bg-emeraldDeep', 'text-white');
+                    btn.classList.remove('bg-creamBg', 'text-inkDark');
+                } else {
+                    btn.classList.remove('bg-emeraldDeep', 'text-white');
+                    btn.classList.add('bg-creamBg', 'text-inkDark');
+                }
+            });
+            renderTrackingTable(status);
+        }
+
+        function openRescheduleModal() {
+            const modal = document.getElementById('student-modal');
+            const content = document.getElementById('student-modal-content');
+            content.innerHTML = `
+                <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">Gestion du planning</span>
+                <h3 class="text-xl font-extrabold text-emeraldDeep mt-1 mb-2">Demander un report de séance</h3>
+                <p class="text-xs text-inkMuted mb-4 leading-relaxed">
+                    Séance concernée : <strong>Semaine 7 — Mercredi à 19h00</strong>. Conformément au règlement pédagogique, toute demande doit être soumise au moins <strong>24h avant le cours</strong>.
+                </p>
+                <form onsubmit="submitReschedule(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Nouveau créneau souhaité</label>
+                        <select id="reschedule-slot" class="w-full px-4 py-2.5 rounded-xl bg-creamBg border border-emeraldDeep/20 text-sm">
+                            <option value="Vendredi à 19h00">Vendredi à 19h00</option>
+                            <option value="Samedi à 10h30">Samedi à 10h30</option>
+                            <option value="Dimanche à 16h00">Dimanche à 16h00</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-inkDark mb-1">Motif court (optionnel)</label>
+                        <input type="text" id="reschedule-reason" placeholder="Ex : Déplacement professionnel" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm">
+                    </div>
+                    <button type="submit" class="w-full py-3 rounded-xl bg-emeraldDeep hover:bg-emeraldMid text-white font-bold text-sm transition">
+                        Transmettre la demande au secrétariat
+                    </button>
+                </form>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function submitReschedule(e) {
+            e.preventDefault();
+            const slot = document.getElementById('reschedule-slot').value;
+            const reason = document.getElementById('reschedule-reason').value || "Non précisé";
+            const msg = `Bonjour AL-MADDAH EDUCATION, je suis Moussa Traoré (Niveau 2). Je souhaite reporter ma séance de Mercredi 19h00 vers le créneau : ${slot}. Motif : ${reason}.`;
+            document.getElementById('student-modal-content').innerHTML = `
+                <div class="text-center py-3 space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-emeraldLight text-emeraldDeep flex items-center justify-center text-xl font-bold mx-auto">✓</div>
+                    <h3 class="text-lg font-extrabold text-emeraldDeep">Demande de report préparée</h3>
+                    <p class="text-xs text-inkMuted leading-relaxed">Cliquez ci-dessous pour notifier directement votre enseignant et le secrétariat sur WhatsApp.</p>
+                    <button onclick="openWhatsApp('${msg.replace(/'/g, "\\'")}')" class="w-full py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition">
+                        Envoyer sur WhatsApp
+                    </button>
+                </div>
+            `;
+        }
+
+        function openResourcePreview(type) {
+            const resources = {
+                memento: {
+                    badge: "Fiche PDF • Niveau 2",
+                    title: "Mémento Illustré du Tajwid",
+                    body: "Ce support récapitule les 4 règles du Noun Sakina (Idhar, Idgham, Iqlab, Ikhfa), les 3 règles du Mim Sakina ainsi que les durées exactes des prolongations (2, 4 ou 6 temps) avec exemples tirés du Mushaf."
+                },
+                exercices: {
+                    badge: "Cahier d'Exercices • Semaines 6 à 9",
+                    title: "Exercices d'application sur Sourate Al-Mulk",
+                    body: "1. Surlignez en vert les occurrences d'Ikhfa Shafawi dans les versets 1 à 15.\n2. Indiquez la durée du Madd dans chaque fin de verset.\n3. Enregistrez votre lecture vocale et envoyez-la avant mercredi."
+                },
+                audio: {
+                    badge: "Support Audio • Récitation Modèle",
+                    title: "Sourate Al-Mulk (Versets 1 à 15) — Rythme Pédagogique",
+                    body: "Écoutez chaque verset 3 fois en suivant sur le Mushaf de Médine, puis répétez à voix haute en veillant à l'équilibre des voyelles et de la Ghunna."
+                },
+                bilan: {
+                    badge: "Relevé Officiel • Semaine 6",
+                    title: "Bilan d'Évaluation Intermédiaire — Moussa Traoré",
+                    body: "• Fluidité de lecture : 9 / 10\n• Application des règles de Tajwid : 8,5 / 10\n• Note globale : 17,5 / 20 (Mention Très Bien)\n• Appréciation : Progression constante et très sérieuse."
+                }
+            };
+            const item = resources[type] || resources.memento;
+            const modal = document.getElementById('student-modal');
+            document.getElementById('student-modal-content').innerHTML = `
+                <span class="text-xs font-bold uppercase tracking-wider text-goldAccent">${item.badge}</span>
+                <h3 class="text-xl font-extrabold text-emeraldDeep mt-1 mb-3">${item.title}</h3>
+                <div class="p-4 rounded-2xl bg-creamBg border border-emeraldDeep/10 text-sm text-inkDark whitespace-pre-line leading-relaxed mb-5">${item.body}</div>
+                <div class="flex justify-end gap-3">
+                    <button onclick="closeStudentModal()" class="px-5 py-2.5 rounded-xl bg-emeraldDeep text-white text-xs font-bold hover:bg-emeraldMid transition">
+                        Fermer l'aperçu
+                    </button>
+                </div>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeStudentModal() {
+            document.getElementById('student-modal').classList.add('hidden');
+        }
+
+        document.getElementById('student-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeStudentModal();
+        });
+
+        // Ouvrir la vue détaillée d'un cursus spécifique
+        function openCourseDetail(courseKey) {
+            const data = coursesDetailData[courseKey];
+            if (!data) return;
+
+            document.getElementById('detail-pole-badge').textContent = data.pole;
+            document.getElementById('detail-level').textContent = data.level;
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-description').textContent = data.description;
+            document.getElementById('detail-prerequis').textContent = data.prerequis;
+            document.getElementById('detail-public').textContent = data.public;
+
+            // Objectifs opérationnels
+            document.getElementById('detail-objectives').innerHTML = data.objectives.map(obj => `
+                <div class="flex items-start gap-2.5 p-3.5 rounded-xl bg-creamBg border border-emeraldDeep/10">
+                    <span class="text-goldAccent font-extrabold">✓</span>
+                    <span>${obj}</span>
+                </div>
+            `).join('');
+
+            // Chronogramme 12 semaines
+            document.getElementById('detail-timeline').innerHTML = data.timeline.map((step, index) => {
+                const isMilestone = step.weeks === "Semaine 6" || step.weeks === "Semaine 12";
+                const cardStyle = isMilestone
+                    ? "bg-emeraldLight/60 border-goldAccent/50"
+                    : "bg-creamBg border-emeraldDeep/10";
+                return `
+                    <div class="p-5 sm:p-6 rounded-2xl border ${cardStyle} flex flex-col sm:flex-row sm:items-start gap-4">
+                        <div class="sm:w-44 shrink-0">
+                            <span class="inline-block px-3 py-1 rounded-lg bg-emeraldDeep text-goldAccent text-xs font-extrabold">${step.weeks}</span>
+                            <span class="block text-[11px] font-bold text-inkMuted uppercase mt-1.5">${step.badge}</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base text-emeraldDeep">${step.title}</h3>
+                            <p class="text-sm text-inkMuted mt-1 leading-relaxed">${step.content}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Configurer les boutons d'inscription pour ce cursus
+            document.getElementById('detail-cta-btn').onclick = function() {
+                openBookingModal(data.title);
+            };
+            document.getElementById('detail-bottom-cta').onclick = function() {
+                openBookingModal(`Évaluation gratuite — ${data.title}`);
+            };
+
+            switchView('course-detail');
+        }
+
+        function scrollToSection(id) {
+            setTimeout(() => {
+                const el = document.getElementById(id);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 50);
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function filterCourses(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('bg-emeraldDeep', 'text-white');
+                    btn.classList.remove('bg-creamBg', 'text-inkDark');
+                } else {
+                    btn.classList.remove('bg-emeraldDeep', 'text-white');
+                    btn.classList.add('bg-creamBg', 'text-inkDark');
+                }
+            });
+
+            const cards = document.querySelectorAll('.course-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        function openBookingModal(courseName) {
+            document.getElementById('booking-course').value = courseName;
+            document.getElementById('booking-form-container').classList.remove('hidden');
+            document.getElementById('booking-success-container').classList.add('hidden');
+            document.getElementById('booking-modal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('booking-modal').classList.add('hidden');
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            const course = document.getElementById('booking-course').value;
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const level = document.getElementById('booking-level').value;
+
+            document.getElementById('confirm-name').textContent = name;
+            document.getElementById('booking-form-container').classList.add('hidden');
+            document.getElementById('booking-success-container').classList.remove('hidden');
+
+            const waMessage = `Bonjour AL-MADDAH EDUCATION, je souhaite m'inscrire :
+- Cursus : ${course}
+- Nom : ${name}
+- Téléphone : ${phone}
+- Niveau : ${level}`;
+            document.getElementById('confirm-wa-btn').onclick = function() {
+                openWhatsApp(waMessage);
+            };
+        }
+
+        // Fermer le modal en cliquant sur l'arrière-plan sombre
+        document.getElementById('booking-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeBookingModal();
+        });
+    </script>
+</body>
+</html>
